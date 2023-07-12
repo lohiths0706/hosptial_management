@@ -1,0 +1,47 @@
+
+{% include 'base.html' %}
+<!-- {%load static %} -->
+{% include 'navigate.html' %} 
+
+<style>
+    .mydivstyle:hover{
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.3);
+    transform: translatey(-20px);
+}
+.contat{
+        height:75vh;
+    }
+</style>
+<div class="contat">
+<h1 class="text-center">ADMIN DASHBOARD</h1>
+<!-- <div class="contat"> -->
+    <!-- <p class="text-white">copyRight 2020 All rights reserved</p> -->
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4 mydivstyle">
+            <h2 style="color: red;">{{d}}</h2>
+            <a href="{% url 'view_Doctor' %}">
+                <h4 style="color: blue;">doctor</h4>
+                <hr class="round">
+            </a>
+        </div>
+            <div class="col-sm-4 mydivstyle">
+                <h2 style="color: red;">{{p}}</h2>
+                <a href="{% url 'view_patient' %}">
+                    <h4 style="color: blue;">patient</h4>
+                    <hr class="round">
+                </a>
+            </div>
+                <div class="col-sm-4 mydivstyle">
+                    <h2 style="color: red;">{{a}}</h2>
+                    <a href="{% url 'view_appointment' %}">
+                        <h4 style="color: blue;">Appointments</h4>
+                        <hr class="round">
+                    </a>
+                </div>
+    </div>
+</div>
+</div>
+{% endblock %}
+{% include 'footer.html' %}

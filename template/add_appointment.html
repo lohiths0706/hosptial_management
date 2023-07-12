@@ -1,0 +1,49 @@
+{% include 'base.html' %}
+{% include 'navigate.html' %}
+{% block content %}
+{% if error == "no" %}
+<script>
+    alert('record saves successfully');
+    window.location="{% url index %}";
+</script>
+{% endif %}
+
+{% if error == "yes" %}
+<script>
+    alert('invalid login, please try again');
+</script>
+{% endif %}
+<style>
+    .contat {
+        height: 75vh;
+    }
+</style>
+<div class="contat">
+    <p class="text-white">copyRight 2020 All rights reserved</p>
+     <div class="container">
+        <h2 class="text-center">Add Appointment</h2>
+        <form method="POST" action="{% url 'add_appointment' %}">
+            {% csrf_token %}
+            <label>Doctor name</label>
+            <select name="doctor" class="form-control">
+                {% for doctor in doctors %}
+                <option value="{{ doctor.name }}">{{ doctor.name }}</option>
+                {% endfor %}
+            </select>
+            <label>Patient</label>
+            <select name="patient" class="form-control">
+                {% for patient in patients %}
+                <option value="{{ patient.name }}">{{ patient.name }}</option>
+                {% endfor %}
+            </select>
+            <label>Date</label>
+            <input type="date" class="form-control" name="date">
+            <label>Time</label>
+            <input type="time" class="form-control" name="time">
+            <input type="submit" value="Book Appointment" class="form-control btn btn-primary">
+        </form>
+    </div> 
+</div>
+
+{% endblock %}
+{% include 'footer.html' %}

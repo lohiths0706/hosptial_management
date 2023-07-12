@@ -1,0 +1,37 @@
+{% include 'base.html' %}
+{% block content %}
+<style>
+    .contat {
+        height: 75vh;
+    }
+</style>
+<div class="contat">
+    <!-- <p class="text-white">copyRight 2020 All rights reserved</p> -->
+
+<div>
+    <h2  class="text-center">VIEW DOCTOR</h2>
+    <table id="example" class="table table-hover">
+        <thead>
+            <tr>
+                <th>Docter</th>
+                <th>Name</th>
+                <th>Mobile</th>
+                <th>special</th>
+                <th>delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in doc %}
+            <tr>
+                <td>{{i.id}}</td>
+                <td>{{i.name}}</td>
+                <td>{{i.mobile}}</td>
+                <td>{{i.special}}</td>
+                <td><a href="{%url 'delete_doctor' i.id %}"onclick="return confirm('are you sure want to delete!')"class="btn btn-danger">delete</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+{% include 'footer.html' %}

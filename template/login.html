@@ -1,0 +1,37 @@
+{% block content %}
+{% include 'base.html' %}
+{% include 'navigate.html' %}
+
+{% if error == "no" %}
+<script>
+    alert('logged in successfully');
+    window.location="{% url 'index' %}";
+</script>
+{% endif %}
+
+{% if error == "yes" %}
+<script>
+    alert('invalid login, please try again');
+</script>
+{% endif %}
+<style>
+    .contat {
+        height: 75vh;
+    }
+</style>
+<div class="contat">
+    <p class="text-white">copyRight 2020 All rights reserved</p>
+    <div class="container">
+        <h2 class="text-center">Admin login</h2>
+        <form method="post">
+            {% csrf_token %}
+            <label>Admin name</label>
+            <input type="text" class="form-control" name="uname">
+            <label>Password</label>
+            <input type="password" class="form-control" name="password">
+            <input type="submit" value="Login" class="form-control btn btn-primary">
+        </form>
+    </div>
+</div>
+{% endblock %}
+{% include 'footer.html' %}
